@@ -1,0 +1,15 @@
+<ng-template #displayArticles>
+    <app-menu></app-menu>
+    <app-add></app-add>
+    <ul *ngFor="let article of filteredArticles">
+        <app-article [article]="article" (getArticles)="getArticles()"></app-article>
+    </ul>
+    <app-footer
+        (newGotoEvent)="setStartDisplayIndex($event)"
+        [numberOfArticles]="numberOfArticles"
+        [startDisplayIndex]="startDisplayIndex"
+        [articlesLength]="articlesLength">
+    </app-footer>
+    <app-modal (getArticles)="getArticles()"></app-modal>
+</ng-template>
+<p *ngIf="isLoading; else displayArticles">Loading</p>

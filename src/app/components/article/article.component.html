@@ -1,0 +1,25 @@
+<article>
+    <h2 class="title"> {{article.title | symbolPipe:"!":"!"}}</h2>
+    <ul class="info__container">
+        <li class="info__item"> {{article.tag}}</li>
+        <li class="info__item">Added by
+            <span class="info__mark"> {{article.author}}</span>
+        </li>
+        <li class="info__item"> {{article.date}}</li>
+    </ul>
+    <div class="actions__container">
+    </div>
+
+    <img src="{{article.imgUrl}}" alt="{{article.title}}" />
+    <div *ngIf="disable" class="content__container">
+        <p>{{article.content}}</p>
+    </div>
+    <div *ngIf="!disable" class="content__container">
+        <p>{{setFirstContent}}</p>
+        <p class="saying">{{article.saying}}</p>
+        <p>{{setSecondContent}}</p>
+    </div>
+    <div class="readmore__container">
+        <button *ngIf="!disableButtons"routerLink="details/{{article.id}}" type="button" class="button">Read More</button>
+    </div>
+</article>

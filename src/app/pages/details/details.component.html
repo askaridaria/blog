@@ -1,0 +1,12 @@
+<ng-template #displayArticles>
+    <app-menu></app-menu>
+    <app-article [article]="article" [disableButtons]="true" [disable]="false">
+    </app-article>
+    <div class="footer">
+    <button type="button" *ngIf="prevArticleId !== 0" routerLink="/details/{{prevArticleId}}"
+        class="footer__link">previous</button>
+    <button type="button" *ngIf="nextArticleId !== 0" routerLink="/details/{{nextArticleId}}"
+        class="footer__link footer__link--next">next</button>
+    </div>
+</ng-template>
+<p *ngIf="isLoading; else displayArticles">Loading</p>
